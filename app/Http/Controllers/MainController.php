@@ -1,14 +1,15 @@
 <?php
-    namespace App\Http\Controllers;
- 
 
-     
-    class MainController extends Controller
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MainController extends Controller
+{
+    //
+    public function index()
     {
-        public function index()
-        {
-           //return "Main::class";
-           return view("main.Main");
-        }
+       //return "Main::class";
+       return view("main.Main");
     }
-?>
+}
