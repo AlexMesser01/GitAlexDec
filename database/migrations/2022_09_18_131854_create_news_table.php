@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("content");
             $table->date("public_date");
             $table->string("category_news")->index("news_category_list");
-            $table->integer("author_news")->index("author_news");
+            $table->string("author_news")->index("author_news");
         });
     }
 
