@@ -14,7 +14,12 @@
 
             <div class="content">
                 <div class="title m-b-md">Main</div>
-                <div></div>
+                <div>Пользовательские данные: {{$user_data}}</div>
+                <div>Все пользователи:
+                @foreach ($all_users as $value)  
+                    <div>{{$value->Username}}</div>
+                @endforeach
+                </div> 
             </div>
         </div>
 @endsection
