@@ -6,6 +6,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,10 @@ Route::get('/store', [StoreController::class, 'index'])->name('storeList');
 Route::get('/profile/user/{username_id}', [ProfileController::class, 'user'])->name('profle');
 
 Route::get('/test', [TestController::class, 'testing']);
+
+Route::get("/authentication/login", [LoginController::class, "login"]);
+
+Route::get("/authentication/signup", [SignUpController::class, "signup"]);
 
 // Тестовые пути для обучения
 Route::get('/user/{id}/{name}', function($id, $name){
