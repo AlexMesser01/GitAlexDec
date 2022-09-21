@@ -98,7 +98,7 @@
     </div>
 
         </nav>
-            <div class="h-100 d-flex justify-content-center flex-column align-items-center">@yield('Login')</div> <!-- Подключаем контент для шаблона -->
+            <div class="h-100 d-flex justify-content-center flex-column align-items-center">@yield('login')</div> <!-- Подключаем контент для шаблона -->
 
             <!-- Footer -->
             <footer class="bg-dark text-center text-white">
@@ -148,7 +148,6 @@
                     <!--Grid column-->
                     </div>
                     <!--Grid row-->
-                </form>
                 </section>
                 <!-- Section: Form -->
 

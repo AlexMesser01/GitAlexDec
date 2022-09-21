@@ -32,9 +32,11 @@ Route::get('/profile/user/{username_id}', [ProfileController::class, 'user'])->n
 
 Route::get('/test', [TestController::class, 'testing']);
 
-Route::get("/authentication/login", [LoginController::class, "login"]);
+Route::match(['get', 'post'], "/autentification/login", [LoginController::class, "login"]);
 
-Route::get("/authentication/signup", [SignUpController::class, "signup"]);
+Route::match(['get', 'post'], "/autentification/signup", [SignUpController::class, "signup"]);
+
+//Route::get("/authentication/signup", [SignUpController::class, "signup"]);
 
 // Тестовые пути для обучения
 Route::get('/user/{id}/{name}', function($id, $name){

@@ -1,6 +1,5 @@
 @extends("layouts.loginLayout")
-@section("Login") 
-
+@section("login") 
 <div class="d-flex justify-content-center flex-column align-items-center">
   <ul class="nav nav-pills nav-justified mb-3 tab-content w-100 p-3">
     <li role="presentation" class="nav-item"><a class="nav-link active"  aria-controls="pills-login" aria-selected="true" role="tab" data-toggle="tab" href="#reg">Регистрация</a></li>
@@ -9,19 +8,21 @@
 
   <div class="tab-content w-100 p-3">
       <div class="tab-pane" id="login" role="tabpanel" aria-labelledby="tab-login">
-          <form method="POST" action="/authentication/login">
+      
+          <form method="POST" action="/autentification/login">
+          @csrf
             <div class="text-center mb-3">
               <p>Авторизация:</p>
             </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="loginName" class="form-control" />
+              <input type="email" name="email" id="loginName" class="form-control" required/>
               <label class="form-label" for="loginName">Почта:</label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="loginPassword" class="form-control" />
+              <input type="password" name="password" id="loginPassword" class="form-control" required/>
               <label class="form-label" for="loginPassword">Пароль:</label>
             </div>
 
@@ -53,24 +54,38 @@
 
 
       <div class="tab-pane active" id="reg" role="tabpanel" aria-labelledby="tab-login">
-        <form method="post" action="">
+       
+              @if (!empty($message = Session::get('authError')))
+                <div></div>
+              @elseif (!empty($message = Session::get('successReg')))
+              <div class="w-100 text-center">{{$message}} </div>
+              @endif
+       
+        <form method="POST" action="/autentification/signup">
+          @csrf
           <div class="text-center mb-3">
             <p>Регистрация:</p>
           </div>
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="email" id="loginName" name="email" class="form-control" required/>
-            <label class="form-label" for="loginName">Почта:</label>
+            <label class="form-label" for="loginName">Почта:
+              @if (!empty($message = Session::get('authError')))
+                  {{$message}}
+              @else
+                  
+              @endif
+            </label>
           </div>
           <!-- Username input -->
           <div class="form-outline mb-4">
-            <input type="text" id="loginName" name="email" class="form-control" required/>
+            <input type="text" id="loginName" name="username" class="form-control" required/>
             <label class="form-label" for="loginName">Никнейм:</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-4">
-            <input type="password" id="loginPassword" class="form-control" required/>
+            <input type="password" name="password" id="loginPassword" class="form-control" required/>
             <label class="form-label" for="loginPassword">Пароль:</label>
           </div>
 
