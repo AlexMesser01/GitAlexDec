@@ -1,15 +1,29 @@
 <?php
     namespace App\Http\Controllers;
+	use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\News;
+use Illuminate\Support\Facades\DB;
     class NewsController extends Controller
+	
 	{
-		public function page(int $page_num = 1)
+		public function show(string $category, int $id_news = 1, Request $request)
 		{
-			return view("news.News", ["page_number" => $page_num]);
+			//dump($id_news);
+			$show_news = News::where("id_news", "=", $id_news)->first();
+			//dump($show_news->Tittle);
+			return view("news.News", ["news" => $show_news]);
 			
 		}
-		public function category($id_cat, $id_news = 1)
+		public function newsList(string $category = "")
 		{
-			return view("news.NewsCategory", ["category" => $id_cat, "news_id" => $id_news]);
+			if (empty($category)) {
+				$receiveNews = News::all();
+			} else {
+				$receiveNews =  News::where('category_news', $category)->get();
+			}
+			//dump($category);
+			return view("news.NewsCategory", ["outputNews" => $receiveNews]);
 		}
 	}
 ?>	

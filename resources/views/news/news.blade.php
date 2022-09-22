@@ -13,8 +13,16 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">News</div>
-                <div>Страница: {{ $page_number }}</div>
+                <div>
+                        <div>
+                            <h1 class=" m-b-md">{{$news->Tittle}}</h1>
+                            <h2>Категория: {{$news->category_news}}</h2>
+                            <div>Дата публикации: {{$news->public_date}}</div><div>Автор: {{$news->author_news}} </div>
+                            <div>
+                                {{$news->content}}
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>
 @endsection

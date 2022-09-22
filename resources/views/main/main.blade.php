@@ -43,17 +43,16 @@
                             </div>
                 </div>
             
-            
             <div class="content">
-                <div class="title m-b-md fs-4 text">Последние новости:</div>
-                <div>Пользовательские данные: {{$user_data}}</div>
-                <div>Все пользователи:
-                @foreach ($all_users as $value)  
-                    <div>{{$value->Username}}</div>
-                @endforeach
-                </div> 
-                
-            </div>
+                <div class="title m-b-md fs-4 text">Новости за последние 7 дней:</div>
+                    <ul class="list-group">
+                        @foreach($actual_news as $news)
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a class="text-decoration-none text-black" href="/news/{{$news->category_news}}/{{$news->id_news}}">{{$news->Tittle}}</a>
+                                <span>{{$news->public_date}}</span>
+                            </li>
+                        @endforeach
+                    </ul>
             </section>
         </div>
 @endsection

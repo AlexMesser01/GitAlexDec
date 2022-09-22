@@ -1,6 +1,6 @@
 @extends("layouts.loginLayout")
 @section("login") 
-<div class="d-flex justify-content-center flex-column align-items-center">
+<div class="d-flex justify-content-center flex-column align-items-center w-50">
   <ul class="nav nav-pills nav-justified mb-3 tab-content w-100 p-3">
     <li role="presentation" class="nav-item"><a class="nav-link active"  aria-controls="pills-login" aria-selected="true" role="tab" data-toggle="tab" href="#reg">Регистрация</a></li>
     <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#login">Авторизация</a></li>
@@ -9,7 +9,7 @@
   <div class="tab-content w-100 p-3">
       <div class="tab-pane" id="login" role="tabpanel" aria-labelledby="tab-login">
       
-          <form method="POST" action="/autentification/login">
+          <form method="POST" action="/authentication/login">
           @csrf
             <div class="text-center mb-3">
               <p>Авторизация:</p>
@@ -17,7 +17,13 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" name="email" id="loginName" class="form-control" required/>
-              <label class="form-label" for="loginName">Почта:</label>
+              <label class="form-label" for="loginName">Почта:
+                @if (!empty($message = Session::get('loginError')))
+                  {{$message}}
+              @else
+                  
+              @endif
+              </label>
             </div>
 
             <!-- Password input -->
@@ -61,7 +67,7 @@
               <div class="w-100 text-center">{{$message}} </div>
               @endif
        
-        <form method="POST" action="/autentification/signup">
+        <form method="POST" action="/authentication/signup">
           @csrf
           <div class="text-center mb-3">
             <p>Регистрация:</p>

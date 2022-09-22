@@ -26,6 +26,6 @@ class SignUpController extends Controller
             $userMod->save(); 
             $request->session()->put("successReg", "Вы успешно зарегестрированы!");
         }   
-        return view('autentification.login');
+        return view('authentication.login');
     }
 }

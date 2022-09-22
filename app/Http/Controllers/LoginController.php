@@ -35,10 +35,36 @@ class LoginController extends Controller
                 //$request->session()->forget("isAuth");
             //$request->session()->flush();
             ///dump($request->session()->all());
-
-            $userdata = $request->post(); // Данные пользователя на авторизацию
+            $userdata = $request->post();
             
-            return view('autentification.login');
+            
+            $checkOut = $request->session()->get("userData");
+            if (isset($checkOut)) {
+                $out = User::find($checkOut->id_user);
+                $out->Status = 0;
+                $request->session()->forget("userData");
+            }
+            if (!empty($userdata)) {
+                $checkLogin = User::where("email", "=", $userdata["email"])->first();
+                // Данные пользователя на авторизацию
+                if (empty($checkLogin) || !password_verify($userdata["password"], $checkLogin->Password)) {
+                    $request->session()->put("loginError", "Неверный email или пароль");
+                } else {
+                    $request->session()->forget("loginError");
+                    $request->session()->forget("authError");
+                    $request->session()->forget("successReg");
+                    $changeStatus = User::find($checkLogin->id_user);
+                    
+
+                    $request->session()->put("userData", $checkLogin);
+                    //dump($request->session()->all());
+                    $changeStatus->Status = 1;
+                    $changeStatus->save();
+                    return redirect('/');
+                }
+            }
+            
+            return view('authentication.login');
             
 		}
 }

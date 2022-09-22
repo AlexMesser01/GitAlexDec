@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ use App\Http\Controllers\SignUpController;
 
 Route::get('/', [MainController::class, 'index'])->name("mainpage");
 
-Route::get('/news/page/{page_num?}', [NewsController::class, 'page'])->where('page_num', "\d+")->name('pages');
+Route::get('/news/{category?}', [NewsController::class, 'newsList'])->where('page_num', "\w+")->name('pages');
 
-Route::get('/news/{id_cat}/{id_news?}', [NewsController::class, 'category'])->where('id_cat', "[a-z-]+")->where('id_news', "\d+")->name('newsByCat');
+Route::match(['get', 'post'], "/news/{category}/{id_news?}", [NewsController::class, "show"])->where('id_cat', "[a-z-]+")->where('id_news', "\d+")->name('newsByCat');
 
 Route::get('/store', [StoreController::class, 'index'])->name('storeList');
 
@@ -32,9 +33,11 @@ Route::get('/profile/user/{username_id}', [ProfileController::class, 'user'])->n
 
 Route::get('/test', [TestController::class, 'testing']);
 
-Route::match(['get', 'post'], "/autentification/login", [LoginController::class, "login"]);
+Route::match(['get', 'post'], "/authentication/login", [LoginController::class, "login"]);
 
-Route::match(['get', 'post'], "/autentification/signup", [SignUpController::class, "signup"]);
+Route::match(['get', 'post'], "/admin/panel", [AdminController::class, "panel"]);
+
+Route::match(['get', 'post'], "/authentication/signup", [SignUpController::class, "signup"]);
 
 //Route::get("/authentication/signup", [SignUpController::class, "signup"]);
 
