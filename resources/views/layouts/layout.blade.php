@@ -90,6 +90,12 @@
                 height: 256px;
                 
             }
+            #searchDrop{
+                position: absolute;
+                top: 75%;
+                z-index: 2;
+                width: inherit
+            }
         </style>
     </head>
     <body>
@@ -116,17 +122,23 @@
           </ul>
              </li>
             <li class="nav-item">
-            <a class="nav-link" href="/">Контакты</a>
+            <a class="nav-link" href="/about">О разработчике</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="/authentication/login">Выйти</a>
             </li>
                 </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex" style="width: 300px"  role="search">
                 <input class="form-control me-2" type="search" placeholder="Поиск новостей" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Поиск</button>
+                <button class="btn btn-outline-success w-25" type="submit">Поиск</button>
+                <ol id="searchDrop" class="list-group list-group-numbered">
+                    <li class="list-group-item">A list item</li>
+                    <li class="list-group-item">A list item</li>
+                    <li class="list-group-item">A list item</li>
+                </ol>
             </form>
-                </div>
+                
+        </div>
                 
         </div>
         <a class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="/profile">

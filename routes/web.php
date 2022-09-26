@@ -9,6 +9,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::get('/test', [TestController::class, 'testing']);
 Route::match(['get', 'post'], "/profile/show/{id_user?}", [ProfileController::class, "show"])->where('id_user', "\d+");
 Route::match(['get', 'post'], "/profile", [ProfileController::class, "user"]);
 
-
+Route::match(['get', 'post'], "/about/", [AboutController::class, "Me"]);
 
 Route::match(['get', 'post'], "/authentication/login", [LoginController::class, "login"]);
 
