@@ -15,25 +15,26 @@
             </div>
 
             <div class="flex-column align-items-center d-flex justify-content-center title m-b-md fs-2 text m-2 w-100 ">Добавить новость: 
-                <form action="">
+                <form action="/admin/panel" method="post">
                 <div class="mb-3">
+                    @csrf
                     <label for="exampleFormControlInput1" class="form-label">Заголовок</label>
-                    <input type="email" name="tittle" class="form-control" id="exampleFormControlInput1" placeholder="Новостной заголовок">
+                    <input type="text" name="tittle" class="form-control" id="exampleFormControlInput1" placeholder="Новостной заголовок" required>
                     <label for="exampleFormControlInput1" class="form-label">Дата публикации:   </label>
-                    <input type="date" name="public_date" class="form-control" id="exampleFormControlInput2" placeholder="Новостной заголовок">
+                    <input type="date" name="public_date" class="form-control" id="exampleFormControlInput2" placeholder="Новостной заголовок" required>
                     <label for="exampleFormControlInput1" class="form-label">Категория:   </label>
                     <select name="category" id="">
                         @foreach($category  as $item)
-                            <option value="{{$item}}">{{$item->category}}</option>
+                            <option value="{{$item->category}}">{{$item->category}}</option>
                         @endforeach
                     </select>
                     </div>
                     <div class="mb-3">
                     <label for="exampleFormControlTextarea1" name="content" class="form-label">Контент</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" required ></textarea>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" name="add_news" class="btn btn-primary mb-3">Добавить новость</button>
+                    <button type="submit" name="add" value="new_news" class="btn btn-primary mb-3">Добавить новость</button>
                 </div>
                 </form>
             </div>
@@ -51,24 +52,25 @@
                     </ul>
             </div>
             <div class=" flex-column align-items-center d-flex justify-content-center title m-b-md fs-2 text m-2 w-100  ">Добавить подписку: 
-                <form action="">
+                <form action="/admin/panel" enctype="multipart/form-data" method="post">
                 <div class="mb-3">
+                @csrf
                     <label for="exampleFormControlInput1" class="form-label">Название подписки</label>
-                    <input type="email" name="product_name" class="form-control" id="exampleFormControlInput1" placeholder="Название">
+                    <input type="text" name="product_name" class="form-control" id="exampleFormControlInput1" placeholder="Название" required>
                     <label for="exampleFormControlInput1" class="form-label">Описание подписки:   </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                    <textarea class="form-control" name="descript" id="exampleFormControlTextarea1" rows="3" required></textarea>
                     <label for="exampleFormControlInput1" class="form-label">Стоимость:   </label>
-                    <input type="number" name="cost" class="form-control" id="exampleFormControlInput2" placeholder="Стоимость">
+                    <input type="number" name="cost" class="form-control" id="exampleFormControlInput2" placeholder="Стоимость" required>
                     
                     </div>
                     <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" name="content" class="form-label">Доступно:</label>
-                    <input type="number" name="descript" class="form-control" id="exampleFormControlInput2" placeholder="Описание">
-                    <label for="exampleFormControlTextarea1" name="content" class="form-label">Изображение:</label>
-                    <input type="file" name="descript" class="form-control" id="exampleFormControlInput2" placeholder="Описание">
+                    <label for="exampleFormControlTextarea1" name="avaliable" class="form-label">Доступно:</label>
+                    <input type="number" name="avaliable" class="form-control" id="exampleFormControlInput2" placeholder="Описание" required>
+                    <label for="exampleFormControlTextarea1" name="ProdImg" class="form-label">Изображение:</label>
+                    <input type="file" name="ProdImg" class="form-control" id="exampleFormControlInput2" placeholder="Описание" required>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" name="add_subscribe" class="btn btn-primary mb-3">Добавить подписку</button>
+                    <button type="submit" name="add" value="new_sub" class="btn btn-primary mb-3">Добавить подписку</button>
                 </div>
                 </form>
             </div>
@@ -85,7 +87,10 @@
                             <span>{{$item->Username}}</span>
                             
                             </a>
-                            <span class="float-end p-3">X</span>
+                            <form action="/admin/panel" method="post">
+                            @csrf
+                            <button type="submit" name="del_user" class="bg-dark border-0 text-white float-end p-3" value="{{$item->Username}}" class="btn btn-primary mb-3">X</button>
+                            </form>
                         </div>
                         @endforeach
                     </ul>
@@ -95,4 +100,5 @@
             
             </section>
         </div>
+        
 @endsection

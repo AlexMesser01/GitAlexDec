@@ -7,25 +7,25 @@
                             <a class="nav-link text-black" disabled>Категории новостей: </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/news/">Все новости</a>
+                            <a class="nav-link active" aria-current="page" href="/news/page/">Все новости</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/news/Культура">Культура</a>
+                            <a class="nav-link active" aria-current="page" href="/news/page/Культура">Культура</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/Политика">Политика</a>
+                            <a class="nav-link" href="/news/page/Политика">Политика</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/Спорт">Спорт</a>
+                            <a class="nav-link" href="/news/page/Спорт">Спорт</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/Наука и техника">Наука и техника</a>
+                            <a class="nav-link" href="/news/page/Наука и техника">Наука и техника</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/Экология">Экология</a>
+                            <a class="nav-link" href="/news/page/Экология">Экология</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/news/Экономика">Экономика</a>
+                            <a class="nav-link" href="/news/page/Экономика">Экономика</a>
                         </li>
                     </ul>
                 </div>
@@ -47,6 +47,18 @@
                 </div>
                 </a>
                 @endforeach
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="/news/page/{{$current_page}}/prev">Previous</a></li>
+                        @for($i=0;$i<$pages;$i++)
+                        
+                        <li class="page-item"><a class="page-link" href="/news/page/{{$i+1}}">{{$i+1}}</a></li>
+                        
+                        @endfor
+                    <li class="page-item"><a class="page-link" href="/news/page/{{$current_page}}/next">Next</a></li>
+                    </ul>
+                </nav>
             </div>
+            
         </div>
 @endsection

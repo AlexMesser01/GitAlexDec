@@ -31,31 +31,31 @@
                 </div>
 
             <div class="news">
-                @foreach($outputNews as $news)
-                <a class="text-black text-decoration-none" href="/news/{{$news->category_news}}/{{$news->id_news}}">
-                <div class="card mb-3" style="max-width: 1024px;">
+                @foreach($outputProduct as $product)
+                <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
-                        <div class="col-md-15">
+                        <div class="col-md-4">
+                        <img src="{{asset($product->img)}}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{$news->Tittle}}</h5>
-                            <p class="card-text">{{$news->content}}</p>
-                            <p class="card-text"><small class="text-muted">Автор статьи: {{$news->author_news}} </small></p>
-                            <p class="card-text"><small class="text-muted">Новость добавлена: {{$news->public_date}} </small></p>
+                            <h5 class="card-title">{{$product->product_name}}</h5>
+                            <p class="card-text">Доступно: {{$product->fdfdf}}</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         </div>
                         </div>
                     </div>
                 </div>
-                </a>
                 @endforeach
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="/news/page/{{$category}}/{{$current_page}}/prev">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="/news/page/{{$current_page}}/prev">Previous</a></li>
                         @for($i=0;$i<$pages;$i++)
                         
-                        <li class="page-item"><a class="page-link" href="/news/page/{{$category}}/{{$i+1}}">{{$i+1}}</a></li>
+                        <li class="page-item"><a class="page-link" href="/news/page/{{$i+1}}">{{$i+1}}</a></li>
                         
                         @endfor
-                        <li class="page-item"><a class="page-link" href="/news/page/{{$category}}/{{$current_page}}/next">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="/news/page/{{$current_page}}/next">Next</a></li>
                     </ul>
                 </nav>
             </div>

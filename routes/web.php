@@ -23,21 +23,33 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'index'])->name("mainpage");
 
-Route::get('/news/{category?}', [NewsController::class, 'newsList'])->where('page_num', "\w+")->name('pages');
+Route::match(['get', 'post'], "/news/page/{page_num?}/{category?}/{remote?}", [NewsController::class, "newsList"])->where('page_num', "\d+")->name('newsPage');
+Route::match(['get', 'post'], "/news/page/{category?}/{page_num?}/{remote?}", [NewsController::class, "CategoryNews"])->where('page_num', "\d+")->name('newsPage');
+Route::match(['get', 'post'], "/news/{category}/{id_news}", [NewsController::class, "show"])->where('category', "[^page]+")->where('id_news', "\d+")->name('newsByCat');
 
-Route::match(['get', 'post'], "/news/{category}/{id_news?}", [NewsController::class, "show"])->where('id_cat', "[a-z-]+")->where('id_news', "\d+")->name('newsByCat');
 
-Route::get('/store', [StoreController::class, 'index'])->name('storeList');
+//Route::get('/store', [StoreController::class, 'index'])->name('storeList');
+Route::match(['get', 'post'], "/store/page/{page_num?}/{remote?}", [StoreController::class, "ProductList"])->where('page_num', "\d+")->name('productList');
+Route::match(['get', 'post'], "/store/page/{category}/{page_num?}/{remote?}", [StoreController::class, "Category"])->where('page_num', "\d+")->name('newsPage');
+Route::match(['get', 'post'], "/store/{category}/{id_product}", [StoreController::class, "ShowProduct"])->where('category', "[^page]+")->where('id_news', "\d+")->name('newsByCat');
 
-Route::get('/profile/user/{username_id}', [ProfileController::class, 'user'])->name('profle');
 
 Route::get('/test', [TestController::class, 'testing']);
 
+
+Route::match(['get', 'post'], "/profile/show/{id_user?}", [ProfileController::class, "show"])->where('id_user', "\d+");
+Route::match(['get', 'post'], "/profile", [ProfileController::class, "user"]);
+
+
+
 Route::match(['get', 'post'], "/authentication/login", [LoginController::class, "login"]);
+
 
 Route::match(['get', 'post'], "/admin/panel", [AdminController::class, "panel"]);
 
+
 Route::match(['get', 'post'], "/authentication/signup", [SignUpController::class, "signup"]);
+
 
 //Route::get("/authentication/signup", [SignUpController::class, "signup"]);
 

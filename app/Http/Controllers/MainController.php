@@ -40,7 +40,6 @@ class MainController extends Controller
 
         //$delCol = DB::table("user")->where("id_user", 7)->delete(); // Удаление столбца 
         $checkAuth = $request->session()->get("userData");
-
         $user_where = DB::table("user")->pluck("id_user"); // Список айдишников
         $all_users = DB::table("user")->get(); // Взять все из user
         $num = 7;

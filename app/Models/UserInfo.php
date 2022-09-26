@@ -9,27 +9,26 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class UserInfo extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable; 
-    use SoftDeletes;
+    //use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected  $primaryKey = 'id_user'; // Сменть название первичного ключа для find($pk);
-    protected $softDelete = true; // Включаем маякого удаление 
+    protected  $primaryKey = 'user'; // Сменть название первичного ключа для find($pk);
+    //protected $softDelete = true; // Включаем маякого удаление 
     public $timestamps = false; // Отключать метки времени при создании через контроллер
-    protected $table = 'user'; // Добавляем сами назавние таблицы
+    protected $table = 'user_info'; // Добавляем сами назавние таблицы
     protected $fillable = [
-        "id_user",
-        'Username',
-        'email',
-        'Avatar',
-        'Password',
-        'Status'
+        'user',
+        'city',
+        'phone_number',
+        'gender',
+        'birthday'
     ];
 
     /**

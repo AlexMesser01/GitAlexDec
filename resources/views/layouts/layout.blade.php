@@ -79,6 +79,17 @@
             .content{
                 padding: 5%
             }
+            .imgChange{
+                background: red;
+                width: 256px;
+                height: 256px;
+                cursor: pointer;
+            }
+            .fileForm{
+                width: 256px;
+                height: 256px;
+                
+            }
         </style>
     </head>
     <body>
@@ -97,8 +108,8 @@
             </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="/store">Магазин</a></li>
-            <li><a class="dropdown-item" href="/news">Новости</a></li>
-            <li><a class="dropdown-item" href="/profile/user/3">Профиль</a></li>
+            <li><a class="dropdown-item" href="/news/page">Новости</a></li>
+            <li><a class="dropdown-item" href="/profile">Профиль</a></li>
             @if(Session::get('userData')->Username == "Admin")
                 <li><a class="dropdown-item" href="/admin/panel">Панель администратора</a></li>
             @else @endif
@@ -118,8 +129,8 @@
                 </div>
                 
         </div>
-        <a class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="#">
-      <img src="{{ asset('img/1.png') }}" alt="Logo" width="64" height="64" class="d-inline-block align-text-top m-2">
+        <a class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="/profile">
+      <img src="{{ asset(Session::get('userData')->Avatar) }}" alt="Logo" width="64" height="64" id="" class="d-inline-block align-text-top m-2 ">
             {{Session::get('userData')->Username}}
         </a>
     </nav>
@@ -304,6 +315,7 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    </body>
+            
+        </body>
     
 </html>
