@@ -45,7 +45,6 @@ class MainController extends Controller
         $num = 7;
         $get_newses = News::where("public_date", ">=", date('Y-m-d', strtotime("-".$num." day")))->where("public_date", "<=", date('Y-m-d'))->get();
         
-        
         if (!is_null($checkAuth)) {
             $getStatus = User::where("id_user", "=", $checkAuth->id_user)->first();
             if ($getStatus->Status != 1) {

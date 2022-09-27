@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,9 @@ use App\Http\Controllers\AboutController;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])->name("mainpage");
+Route::match(['get', 'post'], '/', [MainController::class, "index"]);
+
+Route::match(['get', 'post'], '/request', [RequestController::class, "searchData"]);
 
 Route::match(['get', 'post'], "/news/page/{page_num?}/{category?}/{remote?}", [NewsController::class, "newsList"])->where('page_num', "\d+")->name('newsPage');
 Route::match(['get', 'post'], "/news/page/{category?}/{page_num?}/{remote?}", [NewsController::class, "CategoryNews"])->where('page_num', "\d+")->name('newsPage');

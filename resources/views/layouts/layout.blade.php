@@ -128,13 +128,11 @@
             <a class="nav-link" href="/authentication/login">Выйти</a>
             </li>
                 </ul>
-            <form class="d-flex" style="width: 300px"  role="search">
-                <input class="form-control me-2" type="search" placeholder="Поиск новостей" aria-label="Search">
-                <button class="btn btn-outline-success w-25" type="submit">Поиск</button>
+            <form class="d-flex" method="post" style="width: 300px" role="search">
+            @csrf
+                <input id="srch_data" class="form-control me-2" type="search" placeholder="Поиск новостей" aria-label="Search">
+                <button id="srch_btn" class="btn btn-outline-success w-25" type="submit">Поиск</button>
                 <ol id="searchDrop" class="list-group list-group-numbered">
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
-                    <li class="list-group-item">A list item</li>
                 </ol>
             </form>
                 
@@ -142,7 +140,7 @@
                 
         </div>
         <a class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="/profile">
-      <img src="{{ asset(Session::get('userData')->Avatar) }}" alt="Logo" width="64" height="64" id="" class="d-inline-block align-text-top m-2 ">
+      <img src="{{ asset(Session::get('userData')->Avatar) }}" alt="Logo" width="64"  height="64" id="" class="rounded-4 d-inline-block align-text-top m-2 ">
             {{Session::get('userData')->Username}}
         </a>
     </nav>
@@ -157,9 +155,8 @@
                 </div>
             @endif
             @yield('content') <!-- Подключаем контент для шаблона -->
-
             <!-- Footer -->
-            <footer class="bg-dark text-center text-white">
+            <footer class="bg-dark text-center text-white h-50 position-relative" style="max-height: 30%">
             <!-- Grid container -->
             <div class="container p-4">
                 <!-- Section: Social media -->
@@ -197,125 +194,23 @@
                 <!-- Section: Social media -->
 
                 <!-- Section: Form -->
-                <section class="">
-                
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
-                </form>
-                </section>
                 <!-- Section: Form -->
 
                 <!-- Section: Text -->
-                <section class="mb-4">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                    eum harum corrupti dicta, aliquam sequi voluptate quas.
-                </p>
+                <section class="mb-4 m-4">
+                <p>Данный сайт является тестовой сборкой на основе фреймворка Laravel </p>
                 </section>
                 <!-- Section: Text -->
 
                 <!-- Section: Links -->
-                <section class="">
                 <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-                </section>
+                
                 <!-- Section: Links -->
             </div>
             <!-- Grid container -->
 
             <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="text-center position-absolute bottom-0 w-100 end-0 p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2022 Copyright:
                 <a class="text-white" href="https://github.com/AlexMesser01">AlexDev)</a>
             </div>
@@ -323,11 +218,12 @@
             </footer>
             <!-- Footer -->
 
-
+            
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-            
+            <script type="text/javascript" src="{{asset('/js/jquery.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/js/search.js')}}"></script>
         </body>
     
 </html>
