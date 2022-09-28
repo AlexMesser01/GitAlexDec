@@ -11,6 +11,7 @@
         <!-- Fonts -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{asset('/css/layout.css')}}" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -99,20 +100,19 @@
         </style>
     </head>
     <body>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid ">
             <a class="navbar-brand" href="/">Логотип</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center align-items-center">
+            <li id="drop_container" class="nav-item dropdown d-flex justify-content-center flex-column align-items-center">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Контент
             </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
+          <ul class="dropdown-menu dropdown-menu-dark" id="dropdown">
             <li><a class="dropdown-item" href="/store">Магазин</a></li>
             <li><a class="dropdown-item" href="/news/page">Новости</a></li>
             <li><a class="dropdown-item" href="/profile">Профиль</a></li>
@@ -128,21 +128,21 @@
             <a class="nav-link" href="/authentication/login">Выйти</a>
             </li>
                 </ul>
-            <form class="d-flex" action="/request" method="post" style="width: 300px" role="search">
+            <form class="d-flex " id="srch_form" method="post" role="search">
             @csrf
                 <input id="srch_data" class="form-control me-2" type="search" placeholder="Поиск новостей" aria-label="Search">
                 <button id="srch_btn" class="btn btn-outline-success w-25" type="submit">Поиск</button>
                 <ol id="searchDrop" class="list-group list-group-numbered">
                 </ol>
             </form>
-                
+            <a id="profile_badge" class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="/profile">
+                <img src="{{ asset(Session::get('userData')->Avatar) }}" alt="Logo" width="64"  height="64" id="" class="rounded-4 d-inline-block align-text-top m-2 ">
+                {{Session::get('userData')->Username}}
+            </a>
         </div>
                 
         </div>
-        <a class="navbar-brand d-flex align-items-center justify-content-bg-around p-1" href="/profile">
-      <img src="{{ asset(Session::get('userData')->Avatar) }}" alt="Logo" width="64"  height="64" id="" class="rounded-4 d-inline-block align-text-top m-2 ">
-            {{Session::get('userData')->Username}}
-        </a>
+
     </nav>
             @if (Route::has('login'))
                 <div class="top-right links">

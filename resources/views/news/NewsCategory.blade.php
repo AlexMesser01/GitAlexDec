@@ -1,14 +1,20 @@
 @extends('layouts.layout')
 @section('content')
-        <div class="d-flex p-5">
-                <div class="content w-25"> 
-                    <ul class="nav d-flex flex-column w-55">
-                        <li class="nav-item ">
-                            <a class="nav-link text-black" disabled>Категории новостей: </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/news/page/">Все новости</a>
-                        </li>
+<head>
+    <link href="{{asset('/css/news.css')}}" rel="stylesheet" type="text/css">
+</head>
+<div class="d-flex p-5" id="news_container">
+    <div class="content " class="dropdown" > 
+        <div class="accordion container-fluid" >
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Список категорий
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <ul class="nav d-flex flex-column w-55">
                         @foreach($categories_list as $catogory)
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/news/page/{{$catogory->category_eng}}">{{$catogory->category}}</a>
@@ -16,6 +22,10 @@
                         @endforeach
                     </ul>
                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
             <div class="news">
                 @for($i = 0; $i < count($outputNews);$i++)
