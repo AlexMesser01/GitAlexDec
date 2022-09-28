@@ -28,8 +28,8 @@ Route::match(['get', 'post'], '/', [MainController::class, "index"]);
 Route::match(['get', 'post'], '/request', [RequestController::class, "searchData"]);
 
 Route::match(['get', 'post'], "/news/page/{page_num?}/{category?}/{remote?}", [NewsController::class, "newsList"])->where('page_num', "\d+")->name('newsPage');
-Route::match(['get', 'post'], "/news/page/{category?}/{page_num?}/{remote?}", [NewsController::class, "CategoryNews"])->where('page_num', "\d+")->name('newsPage');
-Route::match(['get', 'post'], "/news/{category}/{id_news}", [NewsController::class, "show"])->where('category', "[^page]+")->where('id_news', "\d+")->name('newsByCat');
+Route::match(['get', 'post'], "/news/page/{category?}/{page_num?}/{remote?}", [NewsController::class, "CategoryNews"])->where('category', "[\w]+")->where('page_num', "\d+")->name('newsPage');
+Route::match(['get', 'post'], "/news/{category}/{id_news}", [NewsController::class, "show"])->where('category', "[\w]+")->where('id_news', "\d+")->name('newsByCat');
 
 
 //Route::get('/store', [StoreController::class, 'index'])->name('storeList');

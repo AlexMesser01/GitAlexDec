@@ -25,9 +25,9 @@ class News extends Authenticatable
     protected $table = 'news'; // Добавляем сами назавние таблицы
     protected $fillable = [
         'Tittle',
-        'content',
         'public_date',
         'category_news',
+        'content',
         'author_news',
     ];
 

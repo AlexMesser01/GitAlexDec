@@ -14,11 +14,13 @@ $(document).ready(function(){
                     "srch_data" : srch_value,
                 },
                 success: function(response){
-                    for (let index = 0; index < response.length; index++) {
-                        console.log(response[index]["Tittle"]);
-                        let url = "/news/"+response[index]["category_news"]+"/"+response[index]["id_news"];
-                        console.log(url);
-                        let newLi = $("<li class='list-group-item'><a class='link-dark text-decoration-none' href="+url+">"+response[index]["Tittle"]+"</a></li>");
+                    console.log(response["news_info"]);
+                    for (let index = 0; index < response[0]["news_info"].length; index++) {
+                        
+                        console.log(response[0]["category"][0][index]);
+                        let url = "/news/"+response[0]["category"][0][index]+"/"+response[0]["news_info"][index]["id_news"];
+                        //console.log(url);
+                        let newLi = $("<li class='list-group-item'><a class='link-dark text-decoration-none' href="+url+">"+response[0]["news_info"][index]["Tittle"]+"</a></li>");
                         searchDrop.append(newLi);
                     }
                 }

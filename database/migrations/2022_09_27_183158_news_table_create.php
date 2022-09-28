@@ -14,12 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id("id_news");
-            $table->string("Tittle");
+            $table->bigIncrements('id_news');
+            $table->string('Tittle');
             $table->string("content");
+            $table->string("category_news")->index("news_category");
+            $table->string("author_news")->index("news_author");
             $table->date("public_date");
-            $table->string("category_news")->index("news_category_list");
-            $table->string("author_news")->index("author_news");
+            $table->foreign("category_news")->references("category")->on("categories")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("author_news")->references("Username")->on("user")->onDelete("cascade")->onUpdate("cascade");
+
         });
     }
 

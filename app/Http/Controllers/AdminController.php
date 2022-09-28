@@ -42,9 +42,9 @@ class AdminController extends Controller
             $news = new News;
             $news->Tittle = $this->postData["tittle"];
             $news->public_date = $this->postData["public_date"];
-            $news->category_news = $this->postData["category"];
+            $news->category_news  = $this->postData["category"];
             $news->content = $this->postData["content"];
-            $news->author_news = $request->session()->get("userData")->Username;
+            $news->author_news  = $request->session()->get("userData")->Username;
             $news->save();
         }
     }

@@ -25,6 +25,7 @@ class Category extends Authenticatable
     protected $table = 'categories'; // Добавляем сами назавние таблицы
     protected $fillable = [
         'category',
+        'category_eng',
     ];
 
     /**

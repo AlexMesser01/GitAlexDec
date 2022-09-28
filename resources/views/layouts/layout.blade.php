@@ -128,7 +128,7 @@
             <a class="nav-link" href="/authentication/login">Выйти</a>
             </li>
                 </ul>
-            <form class="d-flex" method="post" style="width: 300px" role="search">
+            <form class="d-flex" action="/request" method="post" style="width: 300px" role="search">
             @csrf
                 <input id="srch_data" class="form-control me-2" type="search" placeholder="Поиск новостей" aria-label="Search">
                 <button id="srch_btn" class="btn btn-outline-success w-25" type="submit">Поиск</button>
